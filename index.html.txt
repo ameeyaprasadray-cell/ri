@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>All-in-One Revenue Inspector Portal | Government of Odisha</title>
+<meta name="description" content="Official single-access portal for Revenue Inspectors, Odisha — ROR, Demarcation, Bhunaksha, e-District, OPID, DAMPS & more.">
+<!-- Odisha Govt Favicon (use official if available) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇴🇩</text></svg>">
+<!-- 21st.dev Animations (lightweight, no JS) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@21st-dev/anim@1.0.3/dist/anim.min.css">
+<!-- Tailwind-like utility CSS (via CDN, no build step) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+odishaBlue: '#002A5C', // Official Odisha Govt blue (from NIC sites)
+odishaGold: '#FFB319',
+}
+}
+}
+}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+body {
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+color: #1e293b;
+margin: 0;
+padding: 0;
+line-height: 1.6;
+}
+.logo-placeholder {
+width: 80px;
+height: 80px;
+background: linear-gradient(135deg, #002A5C 0%, #004A99 100%);
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-weight: 700;
+font-size: 28px;
+box-shadow: 0 4px 12px rgba(0,42,92,0.15);
+}
+.btn-card {
+transition: all 0.3s ease;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+background: white;
+height: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 1.5rem 1rem;
+position: relative;
+z-index: 1;
+}
+.btn-card:hover {
+transform: translateY(-6px);
+box-shadow: 0 10px 24px rgba(0,42,92,0.18);
+}
+.btn-card::before {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+background: linear-gradient(135deg, rgba(255,179,25,0.1) 0%, transparent 50%, rgba(0,42,92,0.05) 100%);
+z-index: -1;
+border-radius: 12px;
+}
+.btn-icon {
+font-size: 2.5rem;
+margin-bottom: 0.75rem;
+color: #002A5C;
+}
+@media (max-width: 640px) {
+.btn-icon { font-size: 2rem; }
+.btn-card { padding: 1rem 0.75rem; }
+}
+</style>
+</head>
+<body class="min-h-screen">
+<!-- 🔝 Official Header -->
+<header class="bg-odishaBlue text-white py-5 px-4 shadow-lg">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="logo-placeholder">🇴🇩</div>
+<div>
+<h1 class="text-xl md:text-2xl font-bold tracking-tight">Government of Odisha</h1>
+<p class="text-odishaGold font-medium mt-0.5">Revenue & Disaster Management Department</p>
+</div>
+</div>
+<div class="text-sm opacity-90 max-w-md text-center md:text-right">
+📍 An official launchpad for Revenue Inspectors — Secure • Compliant • Odisha First
+</div>
+</div>
+</header>
+<!-- 📣 Hero Banner -->
+<section class="py-6 bg-gradient-to-r from-odishaBlue to-odishaGold text-white text-center px-4">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-2xl md:text-3xl font-bold mb-2">All-in-One Revenue Inspector Portal</h2>
+<p class="opacity-95 max-w-2xl mx-auto">
+One-click access to all official Odisha revenue & citizen service portals — verified, updated, and optimized for field officers.
+</p>
+</div>
+</section>
+<!-- 🧩 Services Grid -->
+<main class="py-10 px-4">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- 🔹 ROR View -->
+<a href="https://bhulekh.ori.nic.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up">
+<div class="btn-icon">📜</div>
+<h3 class="font-bold text-lg mb-1">ROR View</h3>
+<p class="text-sm opacity-75">Record of Rights</p>
+</a>
+<!-- 🔹 Demarcation -->
+<a href="https://odisharevenueservices.nic.in/home.aspx" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-100">
+<div class="btn-icon">🗺️</div>
+<h3 class="font-bold text-lg mb-1">Demarcation</h3>
+<p class="text-sm opacity-75">Boundary mapping & survey</p>
+</a>
+<!-- 🔹 Land Revenue Payment -->
+<a href="https://odisharevenueservices.nic.in/landrevenuepayment/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-200">
+<div class="btn-icon">💰</div>
+<h3 class="font-bold text-lg mb-1">Land Revenue Payment</h3>
+<p class="text-sm opacity-75">Online tax & dues</p>
+</a>
+<!-- 🔹 Bhunaksha -->
+<a href="https://bhunakshaodisha.nic.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-300">
+<div class="btn-icon">🛰️</div>
+<h3 class="font-bold text-lg mb-1">Bhunaksha</h3>
+<p class="text-sm opacity-75">Satellite land records</p>
+</a>
+<!-- 🔹 Misc Certificate -->
+<a href="https://serviceonline.gov.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-400">
+<div class="btn-icon">📄</div>
+<h3 class="font-bold text-lg mb-1">Misc Certificate</h3>
+<p class="text-sm opacity-75">Central & State services</p>
+</a>
+<!-- 🔹 E-District -->
+<a href="https://www.edistrictodisha.gov.in/edistrict/index.php" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-500">
+<div class="btn-icon">🏛️</div>
+<h3 class="font-bold text-lg mb-1">E-District Odisha</h3>
+<p class="text-sm opacity-75">Citizen service delivery</p>
+</a>
+<!-- 🔹 AgriStack -->
+<a href="https://odfr.agristack.gov.in/farmer-registry-od/#/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-600">
+<div class="btn-icon">🌾</div>
+<h3 class="font-bold text-lg mb-1">AgriStack (OD)</h3>
+<p class="text-sm opacity-75">Farmer registry & services</p>
+</a>
+<!-- 🔹 OPID (Cheque Fund) -->
+<a href="https://opid.odisha.gov.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-700">
+<div class="btn-icon">🪙</div>
+<h3 class="font-bold text-lg mb-1">OPID (Cheque Fund)</h3>
+<p class="text-sm opacity-75">Fund disbursement portal</p>
+</a>
+<!-- 🔹 HRMS -->
+<a href="https://hrmsodisha.gov.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-800">
+<div class="btn-icon">👥</div>
+<h3 class="font-bold text-lg mb-1">HRMS</h3>
+<p class="text-sm opacity-75">Human Resource Mgmt</p>
+</a>
+<!-- 🔹 LRMS -->
+<a href="https://saccess.nic.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-900">
+<div class="btn-icon">🔐</div>
+<h3 class="font-bold text-lg mb-1">LRMS</h3>
+<p class="text-sm opacity-75">Land Records Mgmt System</p>
+</a>
+<!-- 🔹 DAMPS (Unnatural Death) -->
+<a href="https://dampsodisha.nic.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-1000">
+<div class="btn-icon">⚖️</div>
+<h3 class="font-bold text-lg mb-1">DAMPS</h3>
+<p class="text-sm opacity-75">Unnatural Death Reporting</p>
+</a>
+<!-- 🔹 Revenue Dashboard -->
+<a href="https://www.revenueodishadashboard.nic.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-1100">
+<div class="btn-icon">📊</div>
+<h3 class="font-bold text-lg mb-1">Revenue Dashboard</h3>
+<p class="text-sm opacity-75">Real-time analytics</p>
+</a>
+<!-- 🔹 WhatsApp Web -->
+<a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-1200">
+<div class="btn-icon">💬</div>
+<h3 class="font-bold text-lg mb-1">WhatsApp Web</h3>
+<p class="text-sm opacity-75">Official communication</p>
+</a>
+<!-- 🔹 Daily Office Work -->
+<a href="https://field-log-folio.lovable.app/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-1300">
+<div class="btn-icon">📝</div>
+<h3 class="font-bold text-lg mb-1">Daily Office Work</h3>
+<p class="text-sm opacity-75">Field log & folio</p>
+</a>
+</div>
+</div>
+</main>
+<!-- 📜 Footer -->
+<footer class="bg-gray-800 text-gray-300 py-6 px-4 mt-12">
+<div class="max-w-7xl mx-auto text-center">
+<p class="mb-2">© <span id="year"></span> Government of Odisha — Revenue & Disaster Management Department</p>
+<p class="text-sm opacity-75 max-w-2xl mx-auto">
+This is a <strong>static access portal</strong> — all links open official NIC/Govt websites in new tabs. No data is collected, stored, or processed.
+</p>
+<div class="mt-4 flex justify-center gap-4">
+<a href="#" class="text-odishaGold hover:underline text-sm">Privacy Policy</a>
+<a href="#" class="text-odishaGold hover:underline text-sm">Terms of Use</a>
+<a href="#" class="text-odishaGold hover:underline text-sm">Accessibility Statement</a>
+</div>
+</div>
+</footer>
+<script>
+// Auto-update year
+document.getElementById('year').textContent = new Date().getFullYear();
+// Optional: Add subtle scroll-triggered reveal on load (enhances anim-fade-in-up)
+document.addEventListener('DOMContentLoaded', () => {
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('anim-fade-in-up');
+}
+});
+}, { threshold: 0.1 });
+document.querySelectorAll('.btn-card').forEach(card => {
+observer.observe(card);
+});
+});
+</script>
+</body>
+</html>
