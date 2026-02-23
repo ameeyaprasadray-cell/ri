@@ -1,236 +1,786 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>All-in-One Revenue Inspector Portal | Government of Odisha</title>
-<meta name="description" content="Official single-access portal for Revenue Inspectors, Odisha — ROR, Demarcation, Bhunaksha, e-District, OPID, DAMPS & more.">
-<!-- Odisha Govt Favicon (use official if available) -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇴🇩</text></svg>">
-<!-- 21st.dev Animations (lightweight, no JS) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@21st-dev/anim@1.0.3/dist/anim.min.css">
-<!-- Tailwind-like utility CSS (via CDN, no build step) -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-theme: {
-extend: {
-colors: {
-odishaBlue: '#002A5C', // Official Odisha Govt blue (from NIC sites)
-odishaGold: '#FFB319',
-}
-}
-}
-}
-</script>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-body {
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-color: #1e293b;
-margin: 0;
-padding: 0;
-line-height: 1.6;
-}
-.logo-placeholder {
-width: 80px;
-height: 80px;
-background: linear-gradient(135deg, #002A5C 0%, #004A99 100%);
-border-radius: 12px;
-display: flex;
-align-items: center;
-justify-content: center;
-color: white;
-font-weight: 700;
-font-size: 28px;
-box-shadow: 0 4px 12px rgba(0,42,92,0.15);
-}
-.btn-card {
-transition: all 0.3s ease;
-border-radius: 12px;
-overflow: hidden;
-box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-background: white;
-height: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-text-align: center;
-padding: 1.5rem 1rem;
-position: relative;
-z-index: 1;
-}
-.btn-card:hover {
-transform: translateY(-6px);
-box-shadow: 0 10px 24px rgba(0,42,92,0.18);
-}
-.btn-card::before {
-content: '';
-position: absolute;
-top: 0; left: 0; right: 0; bottom: 0;
-background: linear-gradient(135deg, rgba(255,179,25,0.1) 0%, transparent 50%, rgba(0,42,92,0.05) 100%);
-z-index: -1;
-border-radius: 12px;
-}
-.btn-icon {
-font-size: 2.5rem;
-margin-bottom: 0.75rem;
-color: #002A5C;
-}
-@media (max-width: 640px) {
-.btn-icon { font-size: 2rem; }
-.btn-card { padding: 1rem 0.75rem; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajaswa Sathi | ରାଜସ୍ୱ ସାଥୀ | Government of Odisha</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #fff8f0 0%, #fef4e7 100%);
+            color: #2d3748;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ===== SAFFRON COLOR VARIABLES ===== */
+        :root {
+            --saffron-primary: #ff8c00;
+            --saffron-dark: #e67e00;
+            --saffron-light: #ffb347;
+            --saffron-accent: #ffa500;
+            --saffron-gradient: linear-gradient(135deg, #ff8c00 0%, #ffa500 100%);
+            --saffron-shadow: rgba(255, 140, 0, 0.3);
+            --navy-blue: #1e40af;
+            --light-gray: #f8fafc;
+            --medium-gray: #64748b;
+        }
+
+        /* ===== HEADER SECTION ===== */
+        .top-strip {
+            background: linear-gradient(90deg, var(--navy-blue) 0%, #3b82f6 100%);
+            color: #e2e8f0;
+            padding: 12px 0;
+            font-size: 0.9rem;
+            border-bottom: 3px solid var(--saffron-primary);
+        }
+
+        .top-strip-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gov-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .gov-links a {
+            color: #cbd5e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .gov-links a:hover {
+            color: var(--saffron-light);
+        }
+
+        .contact-info {
+            font-size: 0.85rem;
+            color: #a0aec0;
+        }
+
+        /* Main Header - SAFFRON COLORED */
+        .main-header {
+            background: var(--saffron-gradient);
+            box-shadow: 0 8px 24px rgba(255, 140, 0, 0.3);
+            position: relative;
+            border-bottom: 4px solid var(--saffron-dark);
+        }
+
+        .header-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .gov-emblem-section {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .emblem-circle {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--saffron-primary);
+            font-weight: bold;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+            position: relative;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .emblem-circle::before {
+            content: "";
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            padding: 8px;
+            background: conic-gradient(from 0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8));
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: subtract;
+            animation: rotate 12s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .emblem-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .emblem-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .emblem-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        .central-title {
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 12px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+            letter-spacing: 0.8px;
+        }
+
+        .sub-title-odia {
+            font-size: 1.8rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Noto Sans Oriya', serif;
+        }
+
+        .department-tagline {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .utility-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            align-items: flex-end;
+        }
+
+        .language-switcher {
+            display: flex;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 35px;
+            padding: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .lang-button {
+            padding: 12px 22px;
+            border: none;
+            background: transparent;
+            border-radius: 28px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .lang-button.active {
+            background: white;
+            color: var(--saffron-primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .lang-button:not(.active):hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: none;
+            border-radius: 40px;
+            padding: 14px 24px;
+            min-width: 260px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .search-container:focus-within {
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-field {
+            border: none;
+            outline: none;
+            flex: 1;
+            padding: 8px 12px;
+            font-size: 1.1rem;
+            background: transparent;
+        }
+
+        .search-submit {
+            background: var(--saffron-gradient);
+            border: none;
+            color: white;
+            padding: 12px 14px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .search-submit:hover {
+            background: var(--saffron-dark);
+            transform: scale(1.1);
+        }
+
+        /* Navigation Menu */
+        .navigation-menu {
+            background: linear-gradient(135deg, var(--navy-blue) 0%, #3b82f6 100%);
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.25);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-list-item {
+            position: relative;
+        }
+
+        .nav-list-link {
+            display: block;
+            padding: 24px 32px;
+            color: #cbd5e0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-list-link:hover,
+        .nav-list-link.active {
+            color: white;
+            background: rgba(255, 140, 0, 0.15);
+            border-bottom-color: var(--saffron-primary);
+        }
+
+        /* ===== SERVICES SECTION (TWO COLUMNS) ===== */
+        .services-section {
+            padding: 80px 0;
+        }
+
+        .services-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* TWO COLUMN LAYOUT */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .service-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* SERVICE BUTTON DESIGN */
+        .service-button {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(255, 140, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--saffron-gradient);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s ease;
+        }
+
+        .service-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(255, 140, 0, 0.2);
+            border-color: var(--saffron-light);
+        }
+
+        .service-button:hover::before {
+            transform: scaleY(1);
+        }
+
+        .service-button-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--saffron-gradient);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            box-shadow: 0 6px 16px var(--saffron-shadow);
+        }
+
+        .service-button-content {
+            flex: 1;
+        }
+
+        .service-button-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .service-button-desc {
+            font-size: 0.95rem;
+            color: var(--medium-gray);
+            line-height: 1.4;
+        }
+
+        .service-button-arrow {
+            color: var(--saffron-primary);
+            font-size: 1.6rem;
+            transition: transform 0.2s ease;
+        }
+
+        .service-button:hover .service-button-arrow {
+            transform: translateX(6px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--navy-blue);
+            color: #e2e8f0;
+            padding: 50px 24px 24px;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--saffron-light);
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            color: #cbd5e0;
+            margin-bottom: 10px;
+        }
+
+        .footer-highlight {
+            color: var(--saffron-accent);
+            font-weight: 700;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1280px) {
+            .header-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 28px;
+            }
+
+            .utility-panel {
+                align-items: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.6rem;
+            }
+
+            .sub-title-odia {
+                font-size: 1.5rem;
+            }
+
+            .service-button {
+                padding: 20px;
+            }
+
+            .nav-list-link {
+                padding: 18px 24px;
+            }
+
+            .service-button-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        :focus-visible {
+            outline: 3px solid var(--saffron-primary);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
-<body class="min-h-screen">
-<!-- 🔝 Official Header -->
-<header class="bg-odishaBlue text-white py-5 px-4 shadow-lg">
-<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-<div class="flex items-center gap-4">
-<div class="logo-placeholder">🇴🇩</div>
-<div>
-<h1 class="text-xl md:text-2xl font-bold tracking-tight">Government of Odisha</h1>
-<p class="text-odishaGold font-medium mt-0.5">Revenue & Disaster Management Department</p>
-</div>
-</div>
-<div class="text-sm opacity-90 max-w-md text-center md:text-right">
-📍 An official launchpad for Revenue Inspectors — Secure • Compliant • Odisha First
-</div>
-</div>
-</header>
-<!-- 📣 Hero Banner -->
-<section class="py-6 bg-gradient-to-r from-odishaBlue to-odishaGold text-white text-center px-4">
-<div class="max-w-4xl mx-auto">
-<h2 class="text-2xl md:text-3xl font-bold mb-2">All-in-One Revenue Inspector Portal</h2>
-<p class="opacity-95 max-w-2xl mx-auto">
-One-click access to all official Odisha revenue & citizen service portals — verified, updated, and optimized for field officers.
-</p>
-</div>
-</section>
-<!-- 🧩 Services Grid -->
-<main class="py-10 px-4">
-<div class="max-w-7xl mx-auto">
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-<!-- 🔹 ROR View -->
-<a href="https://bhulekh.ori.nic.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up">
-<div class="btn-icon">📜</div>
-<h3 class="font-bold text-lg mb-1">ROR View</h3>
-<p class="text-sm opacity-75">Record of Rights</p>
-</a>
-<!-- 🔹 Demarcation -->
-<a href="https://odisharevenueservices.nic.in/home.aspx" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-100">
-<div class="btn-icon">🗺️</div>
-<h3 class="font-bold text-lg mb-1">Demarcation</h3>
-<p class="text-sm opacity-75">Boundary mapping & survey</p>
-</a>
-<!-- 🔹 Land Revenue Payment -->
-<a href="https://odisharevenueservices.nic.in/landrevenuepayment/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-200">
-<div class="btn-icon">💰</div>
-<h3 class="font-bold text-lg mb-1">Land Revenue Payment</h3>
-<p class="text-sm opacity-75">Online tax & dues</p>
-</a>
-<!-- 🔹 Bhunaksha -->
-<a href="https://bhunakshaodisha.nic.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-300">
-<div class="btn-icon">🛰️</div>
-<h3 class="font-bold text-lg mb-1">Bhunaksha</h3>
-<p class="text-sm opacity-75">Satellite land records</p>
-</a>
-<!-- 🔹 Misc Certificate -->
-<a href="https://serviceonline.gov.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-400">
-<div class="btn-icon">📄</div>
-<h3 class="font-bold text-lg mb-1">Misc Certificate</h3>
-<p class="text-sm opacity-75">Central & State services</p>
-</a>
-<!-- 🔹 E-District -->
-<a href="https://www.edistrictodisha.gov.in/edistrict/index.php" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-500">
-<div class="btn-icon">🏛️</div>
-<h3 class="font-bold text-lg mb-1">E-District Odisha</h3>
-<p class="text-sm opacity-75">Citizen service delivery</p>
-</a>
-<!-- 🔹 AgriStack -->
-<a href="https://odfr.agristack.gov.in/farmer-registry-od/#/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-600">
-<div class="btn-icon">🌾</div>
-<h3 class="font-bold text-lg mb-1">AgriStack (OD)</h3>
-<p class="text-sm opacity-75">Farmer registry & services</p>
-</a>
-<!-- 🔹 OPID (Cheque Fund) -->
-<a href="https://opid.odisha.gov.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-700">
-<div class="btn-icon">🪙</div>
-<h3 class="font-bold text-lg mb-1">OPID (Cheque Fund)</h3>
-<p class="text-sm opacity-75">Fund disbursement portal</p>
-</a>
-<!-- 🔹 HRMS -->
-<a href="https://hrmsodisha.gov.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-800">
-<div class="btn-icon">👥</div>
-<h3 class="font-bold text-lg mb-1">HRMS</h3>
-<p class="text-sm opacity-75">Human Resource Mgmt</p>
-</a>
-<!-- 🔹 LRMS -->
-<a href="https://saccess.nic.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-900">
-<div class="btn-icon">🔐</div>
-<h3 class="font-bold text-lg mb-1">LRMS</h3>
-<p class="text-sm opacity-75">Land Records Mgmt System</p>
-</a>
-<!-- 🔹 DAMPS (Unnatural Death) -->
-<a href="https://dampsodisha.nic.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-1000">
-<div class="btn-icon">⚖️</div>
-<h3 class="font-bold text-lg mb-1">DAMPS</h3>
-<p class="text-sm opacity-75">Unnatural Death Reporting</p>
-</a>
-<!-- 🔹 Revenue Dashboard -->
-<a href="https://www.revenueodishadashboard.nic.in/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-1100">
-<div class="btn-icon">📊</div>
-<h3 class="font-bold text-lg mb-1">Revenue Dashboard</h3>
-<p class="text-sm opacity-75">Real-time analytics</p>
-</a>
-<!-- 🔹 WhatsApp Web -->
-<a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-1200">
-<div class="btn-icon">💬</div>
-<h3 class="font-bold text-lg mb-1">WhatsApp Web</h3>
-<p class="text-sm opacity-75">Official communication</p>
-</a>
-<!-- 🔹 Daily Office Work -->
-<a href="https://field-log-folio.lovable.app/" target="_blank" rel="noopener noreferrer" class="btn-card anim-fade-in-up delay-1300">
-<div class="btn-icon">📝</div>
-<h3 class="font-bold text-lg mb-1">Daily Office Work</h3>
-<p class="text-sm opacity-75">Field log & folio</p>
-</a>
-</div>
-</div>
-</main>
-<!-- 📜 Footer -->
-<footer class="bg-gray-800 text-gray-300 py-6 px-4 mt-12">
-<div class="max-w-7xl mx-auto text-center">
-<p class="mb-2">© <span id="year"></span> Government of Odisha — Revenue & Disaster Management Department</p>
-<p class="text-sm opacity-75 max-w-2xl mx-auto">
-This is a <strong>static access portal</strong> — all links open official NIC/Govt websites in new tabs. No data is collected, stored, or processed.
-</p>
-<div class="mt-4 flex justify-center gap-4">
-<a href="#" class="text-odishaGold hover:underline text-sm">Privacy Policy</a>
-<a href="#" class="text-odishaGold hover:underline text-sm">Terms of Use</a>
-<a href="#" class="text-odishaGold hover:underline text-sm">Accessibility Statement</a>
-</div>
-</div>
-</footer>
-<script>
-// Auto-update year
-document.getElementById('year').textContent = new Date().getFullYear();
-// Optional: Add subtle scroll-triggered reveal on load (enhances anim-fade-in-up)
-document.addEventListener('DOMContentLoaded', () => {
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.classList.add('anim-fade-in-up');
-}
-});
-}, { threshold: 0.1 });
-document.querySelectorAll('.btn-card').forEach(card => {
-observer.observe(card);
-});
-});
+<body>
+    <!-- Top Government Strip -->
+    <div class="top-strip">
+        <div class="top-strip-container">
+            <div class="gov-links">
+                <a href="#" aria-label="Government of India">Gov.in</a>
+                <a href="#" aria-label="National Portal of India">India.gov.in</a>
+                <a href="#" aria-label="Digital India">Digital India</a>
+                <a href="#" aria-label="Right to Information">RTI</a>
+                <a href="#" aria-label="National Informatics Centre">NIC</a>
+            </div>
+            <div class="contact-info">
+                📞 Helpline: 1800-345-6789 | ✉️ support@rajaswaathi.gov.in
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header - SAFFRON COLORED -->
+    <header class="main-header">
+        <div class="header-container">
+            <!-- Government Emblem Section -->
+            <div class="gov-emblem-section">
+                <div class="emblem-circle" aria-label="Government Emblem">
+                    ଓ
+                </div>
+                <div class="emblem-text">
+                    <div class="emblem-title">Digital Platform</div>
+                    <div class="emblem-subtitle">Odisha</div>
+                </div>
+            </div>
+
+            <!-- Central Title -->
+            <div class="central-title">
+                <h1 class="main-title">Rajaswa Sathi</h1>
+                <h2 class="sub-title-odia">ରାଜସ୍ୱ ସାଥୀ</h2>
+                <p class="department-tagline">Your Trusted Digital Service Partner</p>
+            </div>
+
+            <!-- Utility Panel -->
+            <div class="utility-panel">
+                <!-- Language Switcher -->
+                <div class="language-switcher" role="group" aria-label="Language selection">
+                    <button class="lang-button active" aria-pressed="true">English</button>
+                    <button class="lang-button" aria-pressed="false">ଓଡିଆ</button>
+                </div>
+
+                <!-- Search Container -->
+                <div class="search-container">
+                    <input 
+                        type="search" 
+                        class="search-field" 
+                        placeholder="Search services..." 
+                        aria-label="Search government services"
+                    >
+                    <button class="search-submit" aria-label="Search" type="submit">
+                        🔍
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navigation-menu" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-list-item">
+                    <a href="#" class="nav-list-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-list-item">
+                    <a href="#" class="nav-list-link">Land Records</a>
+                </li>
+                <li class="nav-list-item">
+                    <a href="#" class="nav-list-link">Revenue Services</a>
+                </li>
+                <li class="nav-list-item">
+                    <a href="#" class="nav-list-link">Digital Services</a>
+                </li>
+                <li class="nav-list-item">
+                    <a href="#" class="nav-list-link">Certificates</a>
+                </li>
+                <li class="nav-list-item">
+                    <a href="#" class="nav-list-link">Payments</a>
+                </li>
+                <li class="nav-list-item">
+                    <a href="#" class="nav-list-link">Grievances</a>
+                </li>
+                <li class="nav-list-item">
+                    <a href="#" class="nav-list-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="services-container">
+            <!-- Two Column Button Layout -->
+            <div class="services-grid">
+                <!-- LEFT COLUMN - 8 BUTTONS -->
+                <div class="service-column">
+                    <!-- Bhulekh (ROR View) -->
+                    <a href="https://bhulekh.ori.nic.in/" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">📜</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">Bhulekh (ROR View)</div>
+                            <div class="service-button-desc">Access comprehensive land records and property ownership details</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- IGR (Online Valuation) -->
+                    <a href="https://www.igrodisha.gov.in/ViewFeeValue.aspx" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">💎</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">IGR (Online Valuation)</div>
+                            <div class="service-button-desc">Get accurate property valuation for registration purposes</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- DAMPS (Death & Accident Monitoring) -->
+                    <a href="https://dampsodisha.nic.in/" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">⚠️</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">DAMPS (Death & Accident Monitoring)</div>
+                            <div class="service-button-desc">Portal for reporting and tracking unnatural deaths</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- LRMS (Land Records Management) -->
+                    <a href="https://saccess.nic.in/" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">💾</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">LRMS (Land Records Management)</div>
+                            <div class="service-button-desc">Advanced database access and land record management</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- Demarcation Services -->
+                    <a href="https://odisharevenueservices.nic.in/home.aspx" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">📐</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">Demarcation Services</div>
+                            <div class="service-button-desc">Apply for professional land boundary survey</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- Land Revenue Payment -->
+                    <a href="https://odishalandrevenue.nic.in/" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">💰</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">Land Revenue Payment</div>
+                            <div class="service-button-desc">Secure online payment portal for land tax</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- Bhunaksha Digital Maps -->
+                    <a href="https://bhunakshaodisha.nic.in/" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">🗺️</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">Bhunaksha Digital Maps</div>
+                            <div class="service-button-desc">View detailed village maps with precise boundaries</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- Digital Crop Survey (DSC) -->
+                    <a href="https://echasa.odisha.gov.in/#/" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">🌾</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">Digital Crop Survey (DSC)</div>
+                            <div class="service-button-desc">Advanced digital crop monitoring platform</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+                </div>
+
+                <!-- RIGHT COLUMN - 8 BUTTONS (INCLUDING NEW COL II) -->
+                <div class="service-column">
+                    <!-- COL II (NEW BUTTON) -->
+                    <a href="https://bhulekh.ori.nic.in/RILogin.aspx" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">🔐</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">COL II</div>
+                            <div class="service-button-desc">Revenue Inspector login portal for administrative access</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- Miscellaneous Certificates -->
+                    <a href="https://serviceonline.gov.in/" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">📄</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">Miscellaneous Certificates</div>
+                            <div class="service-button-desc">Apply for caste, income, residence certificates</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- e-District Portal -->
+                    <a href="https://www.edistrictodisha.gov.in/edistrict/index.php" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">🏛️</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">e-District Portal</div>
+                            <div class="service-button-desc">Unified platform for district-level services</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- Agricultural Stack -->
+                    <a href="https://odfr.agristack.gov.in/farmer-registry-od/#/" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">🚜</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">Agricultural Stack</div>
+                            <div class="service-button-desc">Comprehensive farmer registry and data management</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- Chit Fund (OPID) -->
+                    <a href="https://opid.odisha.gov.in/" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">🪙</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">Chit Fund (OPID)</div>
+                            <div class="service-button-desc">Secure public investment deposit schemes</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- Human Resource Management -->
+                    <a href="https://hrmsodisha.gov.in/" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">👥</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">Human Resource Management</div>
+                            <div class="service-button-desc">Employee records and HR administration</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- Revenue Analytics Dashboard -->
+                    <a href="https://www.revenueodishadashboard.nic.in/" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">📊</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">Revenue Analytics Dashboard</div>
+                            <div class="service-button-desc">Real-time performance monitoring and analytics</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+
+                    <!-- Official WhatsApp Channel -->
+                    <a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer" class="service-button">
+                        <div class="service-button-icon">📱</div>
+                        <div class="service-button-content">
+                            <div class="service-button-title">Official WhatsApp Channel</div>
+                            <div class="service-button-desc">Direct communication with government officials</div>
+                        </div>
+                        <div class="service-button-arrow">→</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3 class="footer-title">Rajaswa Sathi | ରାଜସ୍ୱ ସାଥୀ</h3>
+            <p class="footer-text">
+                <span class="footer-highlight">Digital Platform</span> - Comprehensive Service Portal
+            </p>
+            <p class="footer-text">
+                Empowering citizens through digital transformation and seamless service delivery.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+
 </script>
 </body>
+
 </html>
